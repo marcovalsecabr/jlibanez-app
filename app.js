@@ -27,7 +27,7 @@ function llenarEstados() {
   const select = document.getElementById("estado");
   select.innerHTML = '<option value="">Selecciona Estado</option>';
   estados.forEach(e => {
-    select.innerHTML += `<option value="${e.Id_estado}">${e.Estado}</option>`;
+    select.innerHTML += `<option value="${e.Id_estado}">${e.NomEstado}</option>`;
   });
 }
 
@@ -38,7 +38,7 @@ document.addEventListener("change", (e) => {
     const select = document.getElementById("municipio");
     select.innerHTML = '<option value="">Selecciona Municipio</option>';
     filtrados.forEach(m => {
-      select.innerHTML += `<option value="${m.Id_municipio}">${m.Municipio}</option>`;
+      select.innerHTML += `<option value="${m.Id_municipio}">${m.NomMunicipio}</option>`;
     });
   }
 
@@ -48,7 +48,7 @@ document.addEventListener("change", (e) => {
     const select = document.getElementById("desarrollo");
     select.innerHTML = '<option value="">Selecciona Desarrollo</option>';
     filtrados.forEach(d => {
-      select.innerHTML += `<option value="${d.Id_desarrollo}">${d.Desarrollo}</option>`;
+      select.innerHTML += `<option value="${d.Id_desarrollo}">${d.NomDesarrollo}</option>`;
     });
   }
 
@@ -74,10 +74,15 @@ function mostrarResultados() {
       <div class="card">
         <h3>${p.MODELO}</h3>
         <p>Ubicación: ${p.UBICACIÓN}</p>
-        <p>Recámaras: ${p.RECAMARAS} | Baños: ${p.BAÑOS}</p>
+        <p>Recámaras: ${p.RECAMARAS} | Baños: ${p.BANOS}</p>
+        <p>Estacionamientos: ${p.ESTACIONAMIENTOS} | M2 Construccion: ${p.M2_CONSTRUCCION}</p>
+        <p>Precio Avaluo: $${p.PRECIO_AVALUO}</p>
+        <p>Precio Infonavit: $${p.P_INFONAVIT}</p>
+        <p>Precio FOVISSSTE: $${p.P_FOVISSSTE}</p>
         <p>Precio Bancario: $${p.P_BANCARIO}</p>
-        <button class="btn" onclick="enviarWhatsApp('${p.MODELO}')">
-          Enviar por WhatsApp
+        <p>Observaciones: ${p.OBSERVACIONES}
+        <button class="btn-enviar" onclick="enviarFicha(${index})">
+          📲 Enviar INFO al cliente
         </button>
       </div>
     `;
