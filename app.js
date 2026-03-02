@@ -75,6 +75,7 @@ function mostrarResultados() {
         <h3>${p.MODELO}</h3>
         <p>Ubicación: ${p.UBICACIÓN}</p>
         <p>Recámaras: ${p.RECAMARAS} | Baños: ${p.BANOS}</p>
+        <p>Precio Infonavit: $${p.P_INFONAVIT}</p>
         <p>Precio Bancario: $${p.P_BANCARIO}</p>
         <button class="btn" onclick="enviarWhatsApp('${p.MODELO}')">
           Enviar por WhatsApp
