@@ -1,39 +1,64 @@
-let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [
-  { usuario: "admin", password: "JLI2025", rol: "admin" }
-];
+// ===== URL CSV DE USUARIOS =====
+const CSV_USUARIOS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW6xkyA7SL8Ngdmk9YsqWnlNcOYCQSAwSWnvE4J8YVPlFBOeLYma9ROnwcyfkxA/pub?gid=1573778923&single=true&output=csv";
 
+let usuariosSistema = [];
+
+// ===== CARGAR USUARIOS DESDE CSV =====
+async function cargarUsuarios() {
+  try {
+    const response = await fetch(CSV_USUARIOS);
+    const data = await response.text();
+
+    const filas = data.split("\n").slice(1); // quitar encabezado
+
+    usuariosSistema = filas
+      .filter(f => f.trim() !== "")
+      .map(fila => {
+        const columnas = fila.split(",");
+        return {
+          usuario: columnas[0]?.trim(),
+          password: columnas[1]?.trim(),
+          rol: columnas[2]?.trim().toLowerCase(),
+          nombre: columnas[3]?.trim()
+        };
+      });
+
+    console.log("Usuarios cargados:", usuariosSistema);
+  } catch (error) {
+    console.error("Error cargando usuarios:", error);
+    alert("Error al cargar usuarios del sistema");
+  }
+}
+
+// ===== FUNCIÓN LOGIN =====
 function login() {
-  const user = document.getElementById("usuario").value;
-  const pass = document.getElementById("password").value;
+  const usuarioInput = document.getElementById("usuario").value.trim();
+  const passwordInput = document.getElementById("password").value.trim();
 
-  const valido = usuarios.find(u => u.usuario === user && u.password === pass);
+  const user = usuariosSistema.find(
+    u =>
+      u.usuario === usuarioInput &&
+      u.password === passwordInput
+  );
 
-  if (valido) {
-    localStorage.setItem("logueado", "true");
-    localStorage.setItem("rol", valido.rol);
-    document.getElementById("login").style.display = "none";
-    document.getElementById("app").style.display = "block";
+  if (!user) {
+    alert("Usuario o contraseña incorrecto");
+    return;
+  }
+  
 
-    if (valido.rol === "admin") {
-      document.getElementById("adminBtn").style.display = "block";
-    }
-  } else {
-    alert("Usuario o contraseña incorrectos");
+  // Guardar sesión
+  localStorage.setItem("usuarioActivo", JSON.stringify(user));
+
+  // Ocultar login
+  document.getElementById("login").style.display = "none";
+  document.getElementById("app").style.display = "block";
+
+  // Si es admin (para futuras funciones)
+  if (user.rol === "admin") {
+    console.log("Acceso ADMIN activado");
   }
 }
 
-function logout() {
-  localStorage.removeItem("logueado");
-  location.reload();
-}
-
-window.onload = () => {
-  if (localStorage.getItem("logueado") === "true") {
-    document.getElementById("login").style.display = "none";
-    document.getElementById("app").style.display = "block";
-
-    if (localStorage.getItem("rol") === "admin") {
-      document.getElementById("adminBtn").style.display = "block";
-    }
-  }
-};
+// ===== CARGAR USUARIOS AL INICIAR =====
+window.addEventListener("DOMContentLoaded", cargarUsuarios);
