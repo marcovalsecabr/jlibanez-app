@@ -76,7 +76,7 @@ function mostrarResultados() {
         <p>Ubicación: ${p.UBICACIÓN}</p>
         <p>Recámaras: ${p.RECAMARAS} | Baños: ${p.BANOS}</p>
         <p>Estacionamientos: ${p.ESTACIONAMIENTOS} | M2 Construccion: ${p.M2_CONSTRUCCION}</p>
-        <p>Precio Avaluo: $${p.P_PRECIO_AVALUO}</p>
+        <p>Precio Avaluo: $${p.PRECIO_AVALUO}</p>
         <p>Precio Infonavit: $${p.P_INFONAVIT}</p>
         <p>Precio FOVISSSTE: $${p.P_FOVISSSTE}</p>
         <p>Precio Bancario: $${p.P_BANCARIO}</p>
