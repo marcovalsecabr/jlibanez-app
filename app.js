@@ -27,7 +27,7 @@ function llenarEstados() {
   const select = document.getElementById("estado");
   select.innerHTML = '<option value="">Selecciona Estado</option>';
   estados.forEach(e => {
-    select.innerHTML += `<option value="${e.Id_estado}">${e.NomEstado}</option>`;
+    select.innerHTML += `<option value="${e.Id_estado}">${e.Estado}</option>`;
   });
 }
 
@@ -38,7 +38,7 @@ document.addEventListener("change", (e) => {
     const select = document.getElementById("municipio");
     select.innerHTML = '<option value="">Selecciona Municipio</option>';
     filtrados.forEach(m => {
-      select.innerHTML += `<option value="${m.Id_municipio}">${m.NomMunicipio}</option>`;
+      select.innerHTML += `<option value="${m.Id_municipio}">${m.Municipio}</option>`;
     });
   }
 
@@ -48,7 +48,7 @@ document.addEventListener("change", (e) => {
     const select = document.getElementById("desarrollo");
     select.innerHTML = '<option value="">Selecciona Desarrollo</option>';
     filtrados.forEach(d => {
-      select.innerHTML += `<option value="${d.Id_desarrollo}">${d.NomDesarrollo}</option>`;
+      select.innerHTML += `<option value="${d.Id_desarrollo}">${d.Desarrollo}</option>`;
     });
   }
 
@@ -81,8 +81,8 @@ function mostrarResultados() {
         <p>Precio FOVISSSTE: $${p.P_FOVISSSTE}</p>
         <p>Precio Bancario: $${p.P_BANCARIO}</p>
         <p>Observaciones: ${p.OBSERVACIONES}
-        <button class="btn-enviar" onclick="enviarFicha(${index})">
-          📲 Enviar INFO al cliente
+        <button class="btn" onclick="enviarWhatsApp('${p.MODELO}')">
+          Enviar por WhatsApp
         </button>
       </div>
     `;
