@@ -81,18 +81,73 @@ function mostrarResultados() {
         <p>Precio FOVISSSTE: $${p.P_FOVISSSTE}</p>
         <p>Precio Bancario: $${p.P_BANCARIO}</p>
         <p>Observaciones: ${p.OBSERVACIONES}
-        <button class="btn" onclick="enviarWhatsApp('${p.MODELO}')">
-          Enviar por WhatsApp
+        <button class="btn-maps" onclick="abrirMaps(${index})">
+          📍 Abrir en Maps
+        </button>
+        <button class="btn-enviar" onclick="enviarFicha(${index})">
+          📲 Enviar INFO al cliente
         </button>
       </div>
     `;
   });
 }
 
-function enviarWhatsApp(modelo) {
-  const mensaje = `Hola, quiero información del modelo ${modelo} - JLIbañez Inmobiliaria`;
+function enviarFicha(index) {
+  const p = listadoFiltrado[index];
+
+  // Crear link automático de Google Maps con la ubicación
+  const ubicacionTexto = p["UBICACIÓN"] || "";
+  const linkMaps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ubicacionTexto)}`;
+
+  const mensaje =
+`🏡 *${p.MODELO || "Propiedad Disponible"}*
+_JLIbañez Inmobiliaria_
+
+📍 Ubicación: ${ubicacionTexto}
+🗺️ Ver en Maps: ${linkMaps}
+
+🏘️ Desarrollo: ${p.NomDesarrollo || ""}
+🛏️ Recámaras: ${p.RECAMARAS || ""}
+🛁 Baños: ${p["BAÑOS"] || ""}
+🚗 Estacionamientos: ${p.ESTACIONAMIENTOS || ""}
+
+📐 Terreno: ${p.M2_TERRENO || ""} m²
+🏗️ Construcción: ${p.M2_CONSTRUCCION || ""} m²
+
+💰 Opciones de precio:
+• Infonavit: $${formatoPrecio(p.P_INFONAVIT)}
+• Fovissste: $${formatoPrecio(p.P_FOVISSSTE)}
+• Bancario: $${formatoPrecio(p.P_BANCARIO)}
+• Otros: $${formatoPrecio(p.P_OTROS)}
+
+📊 Disponibilidad: ${p.DISPONIBILIDAD || "Consultar"}
+
+📩 Información enviada por asesor de
+*JLIbañez Inmobiliaria*
+¿Te gustaría agendar una visita?`;
+
   const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
 
+function formatoPrecio(valor) {
+  if (!valor) return "0";
+  return Number(valor).toLocaleString("es-MX");
+}
+
+function abrirMaps(index) {
+  const propiedad = listadoFiltrado[index];
+
+  const ubicacion = propiedad["UBICACIÓN"] || "";
+
+  if (!ubicacion || ubicacion.trim() === "") {
+    alert("Esta propiedad no tiene ubicación registrada.");
+    return;
+  }
+
+  // Genera búsqueda directa en Google Maps
+  const urlMaps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ubicacion)}`;
+  
+  window.open(urlMaps, "_blank");
+}
 iniciar();
