@@ -89,35 +89,7 @@ function mostrarResultados() {
   });
 }
 
-function enviarFicha(index) {
-  const propiedad = listadoFiltrado[index];
 
-  const mensaje = `🏡 *${propiedad.MODELO} - JLIbañez Inmobiliaria*
 
-📍 Ubicación: ${propiedad["UBICACIÓN"]}
-🏘️ Desarrollo: ${propiedad.Desarrollo || ""}
-🛏️ Recámaras: ${propiedad.RECAMARAS}
-🛁 Baños: ${propiedad["BAÑOS"]}
-🚗 Estacionamientos: ${propiedad.ESTACIONAMIENTOS}
-
-📐 Terreno: ${propiedad.M2_TERRENO} m²
-🏗️ Construcción: ${propiedad.M2_CONSTRUCCION} m²
-
-💰 Precio Avalúo: $${formatoPrecio(propiedad.PRECIO_AVALUO)}
-🏦 Infonavit: $${formatoPrecio(propiedad.P_INFONAVIT)}
-🏛️ Fovissste: $${formatoPrecio(propiedad.P_FOVISSSTE)}
-🏦 Bancario: $${formatoPrecio(propiedad.P_BANCARIO)}
-
-📝 Observaciones: ${propiedad.OBSERVACIONES || "N/A"}
-
-📩 Información enviada por asesor de JLIbañez Inmobiliaria`;
-
-  const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
-  window.open(url, "_blank");
-}
-function formatoPrecio(valor) {
-  if (!valor) return "0";
-  return Number(valor).toLocaleString("es-MX");
-}
 
 iniciar();
