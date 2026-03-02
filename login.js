@@ -3,22 +3,24 @@ let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [
 ];
 
 function login() {
-  const user = document.getElementById("usuario").value;
-  const pass = document.getElementById("password").value;
+  const usuarioInput = document.getElementById("usuario").value.trim();
+  const passwordInput = document.getElementById("password").value.trim();
 
-  const valido = usuarios.find(u => u.usuario === user && u.password === pass);
+  if (
+    usuarioInput === ADMIN.usuario &&
+    passwordInput === ADMIN.password
+  ) {
+    // Guardar sesión
+    localStorage.setItem("usuarioActivo", JSON.stringify(ADMIN));
 
-  if (valido) {
-    localStorage.setItem("logueado", "true");
-    localStorage.setItem("rol", valido.rol);
+    // Ocultar login
     document.getElementById("login").style.display = "none";
+
+    // Mostrar app
     document.getElementById("app").style.display = "block";
 
-    if (valido.rol === "admin") {
-      document.getElementById("adminBtn").style.display = "block";
-    }
   } else {
-    alert("Usuario o contraseña incorrectos");
+    alert("Usuario o contraseña incorrecto");
   }
 }
 
