@@ -85,11 +85,15 @@ function mostrarResultados() {
           📲 Enviar INFO al cliente
         </button>
       </div>
-    `;
+      `;
   });
 }
 
-
+function enviarWhatsApp(modelo) {
+  const mensaje = `Hola, quiero información del modelo ${modelo} - JLIbañez Inmobiliaria`;
+  const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+}
 
 
 iniciar();
