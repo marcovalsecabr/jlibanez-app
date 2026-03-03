@@ -1,9 +1,9 @@
-const ADMIN = {
-  usuario: "admin",
-  password: "JLI2026",
-  rol: "admin",
-  empresa: "JLIbañez Inmobiliaria"
-};
+//const ADMIN = {
+ // usuario: "admin",
+  //password: "JLI2026",
+ // rol: "admin",
+ // empresa: "JLIbañez Inmobiliaria"
+//};
 const CSV_ESTADOS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW6xkyA7SL8Ngdmk9YsqWnlNcOYCQSAwSWnvE4J8YVPlFBOeLYma9ROnwcyfkxA/pub?gid=1324009565&single=true&output=csv";
 const CSV_MUNICIPIOS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW6xkyA7SL8Ngdmk9YsqWnlNcOYCQSAwSWnvE4J8YVPlFBOeLYma9ROnwcyfkxA/pub?gid=1864875236&single=true&output=csv";
 const CSV_DESARROLLOS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW6xkyA7SL8Ngdmk9YsqWnlNcOYCQSAwSWnvE4J8YVPlFBOeLYma9ROnwcyfkxA/pub?gid=809287502&single=true&output=csv";
@@ -95,10 +95,10 @@ function mostrarResultados() {
   });
 }
 
-function enviarWhatsApp(modelo) {
-  const mensaje = `Hola, quiero información del modelo ${modelo} - JLIbañez Inmobiliaria`;
-  const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
-  window.open(url, "_blank");
-}
+//function enviarWhatsApp(modelo) {
+ // const mensaje = `Hola, quiero información del modelo ${modelo} - JLIbañez Inmobiliaria`;
+ // const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
+ // window.open(url, "_blank");
+//}
 
 iniciar();
