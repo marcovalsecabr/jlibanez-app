@@ -104,9 +104,9 @@ function mostrarResultados() {
 
         <p><strong>📝 Observaciones:</strong><br>${p.OBSERVACIONES || "Sin observaciones"}</p>
 
-        <button class="btn-maps" onclick="abrirMaps('${p.UBICACIÓN}')">
+        <!--<button class="btn-maps" onclick="abrirMaps('${p.UBICACIÓN}')">
           📍 Abrir en Maps
-        </button>
+        </button>-->
 
       </div>
     `;
