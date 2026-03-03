@@ -64,15 +64,15 @@ document.addEventListener("change", (e) => {
 
 function mostrarResultados() {
   const idDes = document.getElementById("desarrollo").value;
-  const precioMax = document.getElementById("precioMax").value;
+  ///const precioMax = document.getElementById("precioMax").value;
   const contenedor = document.getElementById("resultados");
 
   let filtrados = listado.filter(p => p.Id_desarrollo === idDes);
 
-  if (precioMax) {
-    filtrados = filtrados.filter(p => 
-      parseFloat(p.P_BANCARIO) <= parseFloat(precioMax)
-    );
+ // if (precioMax) {
+ //   filtrados = filtrados.filter(p => 
+ //     parseFloat(p.P_BANCARIO) <= parseFloat(precioMax)
+ //   );
   }
 
   contenedor.innerHTML = "";
