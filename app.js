@@ -58,9 +58,8 @@ document.addEventListener("change", (e) => {
     });
   }
 
-  if (e.target.id === "desarrollo" || e.target.id === "precioMax") {
-    mostrarResultados();
-  }
+   mostrarResultados();
+
 });
 
 function mostrarResultados() {
