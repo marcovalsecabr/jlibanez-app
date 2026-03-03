@@ -69,10 +69,10 @@ function mostrarResultados() {
 
   let filtrados = listado.filter(p => p.Id_desarrollo === idDes);
 
- // if (precioMax) {
- //   filtrados = filtrados.filter(p => 
- //     parseFloat(p.P_BANCARIO) <= parseFloat(precioMax)
- //   );
+  if (precioMax) {
+    filtrados = filtrados.filter(p => 
+      parseFloat(p.P_BANCARIO) <= parseFloat(precioMax)
+    );
   }
 
   contenedor.innerHTML = "";
