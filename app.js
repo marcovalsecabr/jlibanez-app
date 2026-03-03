@@ -71,25 +71,44 @@ function mostrarResultados() {
   let filtrados = listado.filter(p => p.Id_desarrollo === idDes);
 
   if (precioMax) {
-    filtrados = filtrados.filter(p => parseFloat(p.P_BANCARIO) <= parseFloat(precioMax));
+    filtrados = filtrados.filter(p => 
+      parseFloat(p.P_BANCARIO) <= parseFloat(precioMax)
+    );
   }
 
   contenedor.innerHTML = "";
-  filtrados.forEach(p => {
+
+  filtrados.forEach((p, index) => {
     contenedor.innerHTML += `
       <div class="card">
+
         <h3>${p.MODELO}</h3>
-        <p>Ubicación: ${p.UBICACIÓN}</p>
-        <p>Recámaras: ${p.RECAMARAS} | Baños: ${p.BANOS}</p>
-        <p>Estacionamientos: ${p.ESTACIONAMIENTOS} | M2 Construccion: ${p.M2_CONSTRUCCION}</p>
-        <p>Precio Avaluo: $${p.PRECIO_AVALUO}</p>
-        <p>Precio Infonavit: $${p.P_INFONAVIT}</p>
-        <p>Precio FOVISSSTE: $${p.P_FOVISSSTE}</p>
-        <p>Precio Bancario: $${p.P_BANCARIO}</p>
-        <p>Observaciones: ${p.OBSERVACIONES}
-        <button class="btn" onclick="enviarWhatsApp('${p.MODELO}')">
-          Enviar por WhatsApp
+
+        <p><strong>📍 Ubicación:</strong> ${p.UBICACIÓN}</p>
+
+        <p>
+          🛏️ ${p.RECAMARAS} | 
+          🛁 ${p.BANOS}
+        </p>
+
+        <p>
+          🚗 ${p.ESTACIONAMIENTOS} | 
+          📐 ${p.M2_CONSTRUCCION} m²
+        </p>
+
+        <hr>
+
+        <p><strong>💰 Precio Avalúo:</strong> $${formatoPrecio(p.PRECIO_AVALUO)}</p>
+        <p><strong>🏦 Infonavit:</strong> $${formatoPrecio(p.P_INFONAVIT)}</p>
+        <p><strong>🏛️ FOVISSSTE:</strong> $${formatoPrecio(p.P_FOVISSSTE)}</p>
+        <p><strong>🏦 Bancario:</strong> $${formatoPrecio(p.P_BANCARIO)}</p>
+
+        <p><strong>📝 Observaciones:</strong><br>${p.OBSERVACIONES || "Sin observaciones"}</p>
+
+        <button class="btn-maps" onclick="abrirMaps('${p.UBICACIÓN}')">
+          📍 Abrir en Maps
         </button>
+
       </div>
     `;
   });
@@ -100,5 +119,17 @@ function mostrarResultados() {
  // const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
  // window.open(url, "_blank");
 //}
+function abrirMaps(ubicacion) {
+  if (!ubicacion) {
+    alert("Ubicación no disponible");
+    return;
+  }
 
+  const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ubicacion)}`;
+  window.open(url, "_blank");
+}
+function formatoPrecio(valor) {
+  if (!valor) return "0";
+  return Number(valor).toLocaleString("es-MX");
+}
 iniciar();
