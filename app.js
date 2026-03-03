@@ -97,10 +97,10 @@ function mostrarResultados() {
 
         <hr>
 
-        <p><strong>💰 Precio Avalúo:</strong> $${formatoPrecio(p.PRECIO_AVALUO)}</p>
-        <p><strong>🏦 Infonavit:</strong> $${formatoPrecio(p.P_INFONAVIT)}</p>
-        <p><strong>🏛️ FOVISSSTE:</strong> $${formatoPrecio(p.P_FOVISSSTE)}</p>
-        <p><strong>🏦 Bancario:</strong> $${formatoPrecio(p.P_BANCARIO)}</p>
+        <p><strong>💰 Precio Avalúo:</strong> $${p.PRECIO_AVALUO}</p>
+        <p><strong>🏦 Infonavit:</strong> $${p.P_INFONAVIT}</p>
+        <p><strong>🏛️ FOVISSSTE:</strong> $${p.P_FOVISSSTE}</p>
+        <p><strong>🏦 Bancario:</strong> $${p.P_BANCARIO}</p>
 
         <p><strong>📝 Observaciones:</strong><br>${p.OBSERVACIONES || "Sin observaciones"}</p>
 
