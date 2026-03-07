@@ -83,7 +83,7 @@ function mostrarResultados() {
 
         <h3>${p.MODELO}</h3>
 
-        <p><strong>📍 Ubicación:</strong> ${p.UBICACIÓN}</p>
+        <p><strong>📍 Ubicación:</strong><a href="${p.UBICACIÓN}" target="_blank">Abrir</a></p>
 
         <p>
           🛏️ ${p.RECAMARAS} | 
