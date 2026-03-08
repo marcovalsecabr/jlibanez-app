@@ -101,7 +101,7 @@ function mostrarResultados() {
         <p><strong>🏦 Infonavit:</strong> $${p.P_INFONAVIT}</p>
         <p><strong>🏛️ FOVISSSTE:</strong> $${p.P_FOVISSSTE}</p>
         <p><strong>🏦 Bancario:</strong> $${p.P_BANCARIO}</p>
-
+        <p><strong>💰 Gastos:</strong> $${p.GASTOS_NOTARIALES}</p>
         <p><strong>📝 Observaciones:</strong><br>${p.OBSERVACIONES || "Sin observaciones"}</p>
 
         <!--<button class="btn-maps" onclick="abrirMaps('${p.UBICACIÓN}')">
