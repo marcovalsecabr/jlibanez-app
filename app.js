@@ -83,13 +83,13 @@ Baños: ${p.BANOS}
 Estacionamientos: ${p.ESTACIONAMIENTOS}
 Construcción: ${p.M2_CONSTRUCCION} m²
 
-        💰 Precio Avalúo:</strong> $${p.PRECIO_AVALUO}
-        🏦 Infonavit:</strong> $${p.P_INFONAVIT}
-        🏛️ FOVISSSTE:</strong> $${p.P_FOVISSSTE}
-        🏦 Bancario:</strong> $${p.P_BANCARIO}
-        🏦 DISPONIBLIDAD:</strong> ${p.DISPONIBILIDAD}
-        💰 Gastos:</strong> ${p.GASTOS_NOTARIALES}
-        📝 Observaciones:</strong><br>${p.OBSERVACIONES || "Sin observaciones"}
+        💰 *Precio Avalúo:* $${p.PRECIO_AVALUO}
+        🏦 *Infonavit:* $${p.P_INFONAVIT}
+        🏛️ *FOVISSSTE:* $${p.P_FOVISSSTE}
+        🏦 *Bancario:* $${p.P_BANCARIO}
+        🏦 *DISPONIBLIDAD:* ${p.DISPONIBILIDAD}
+        💰 *Gastos:* ${p.GASTOS_NOTARIALES || "CONSULTAR"}
+        📝 *Observaciones:*<br>${p.OBSERVACIONES || "Sin observaciones"}
 
 Ubicación:
 ${p.UBICACIÓN}
