@@ -89,7 +89,7 @@ Construcción: ${p.M2_CONSTRUCCION} m²
         🏦 *Bancario:* $${p.P_BANCARIO}
         🏦 *DISPONIBLIDAD:* ${p.DISPONIBILIDAD}
         💰 *Gastos:* ${p.GASTOS_NOTARIALES || "CONSULTAR"}
-        📝 *Observaciones:*<br>${p.OBSERVACIONES || "Sin observaciones"}
+        📝 *Observaciones:*${p.OBSERVACIONES || "Sin observaciones"}
 
 Ubicación:
 ${p.UBICACIÓN}
