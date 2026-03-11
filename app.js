@@ -72,6 +72,24 @@ function mostrarResultados() {
   contenedor.innerHTML = "";
 
   filtrados.forEach((p, index) => {
+
+    let mensaje = `
+🏡 Te comparto esta opción:
+
+Modelo: ${p.MODELO}
+Recámaras: ${p.RECAMARAS}
+Baños: ${p.BANOS}
+Estacionamientos: ${p.ESTACIONAMIENTOS}
+Construcción: ${p.M2_CONSTRUCCION} m²
+
+💰 Precio Bancario: $${p.P_BANCARIO}
+
+Ubicación:
+${p.UBICACIÓN}
+`;
+
+    let linkWhatsapp = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
+
     contenedor.innerHTML += `
       <div class="card">
 
@@ -83,36 +101,27 @@ function mostrarResultados() {
           🛏️ ${p.RECAMARAS} | 
           🛁 ${p.BANOS}
         </p>
-
         <p>
           🚗 ${p.ESTACIONAMIENTOS} | 
           📐 ${p.M2_CONSTRUCCION} m²
         </p>
-
         <hr>
-
-        <p><strong>💰 Precio AAvalúo:</strong> $${p.PRECIO_AVALUO}</p>
+        <p><strong>💰 Precio Avalúo:</strong> $${p.PRECIO_AVALUO}</p>
         <p><strong>🏦 Infonavit:</strong> $${p.P_INFONAVIT}</p>
         <p><strong>🏛️ FOVISSSTE:</strong> $${p.P_FOVISSSTE}</p>
         <p><strong>🏦 Bancario:</strong> $${p.P_BANCARIO}</p>
         <p><strong>🏦 DISPONIBLIDAD:</strong> ${p.DISPONIBILIDAD}</p>
-        <p><strong>💰 Gastos:</strong> $${p.GASTOS_NOTARIALES}</p>
+        <p><strong>💰 Gastos:</strong> ${p.GASTOS_NOTARIALES}</p>
         <p><strong>📝 Observaciones:</strong><br>${p.OBSERVACIONES || "Sin observaciones"}</p>
 
+        <a href="${linkWhatsapp}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:white;padding:8px 12px;border-radius:6px;text-decoration:none;margin-top:10px;">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="18">
+          Compartir por WhatsApp
+        </a>
 
       </div>
     `;
   });
 }
 
-//function enviarWhatsApp(modelo) {
- // const mensaje = `Hola, quiero información del modelo ${modelo} - Ibañez Inmobiliaria`;
- // const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
- // window.open(url, "_blank");
-//}
-
-function formatoPrecio(valor) {
-  if (!valor) return "0";
-  return Number(valor).toLocaleString("es-MX");
-}
 iniciar();
