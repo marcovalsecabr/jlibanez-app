@@ -1,9 +1,3 @@
-//const ADMIN = {
- // usuario: "admin",
-  //password: "JLI2026",
- // rol: "admin",
- // empresa: "JLIbañez Inmobiliaria"
-//};
 const CSV_ESTADOS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW6xkyA7SL8Ngdmk9YsqWnlNcOYCQSAwSWnvE4J8YVPlFBOeLYma9ROnwcyfkxA/pub?gid=1324009565&single=true&output=csv";
 const CSV_MUNICIPIOS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW6xkyA7SL8Ngdmk9YsqWnlNcOYCQSAwSWnvE4J8YVPlFBOeLYma9ROnwcyfkxA/pub?gid=1864875236&single=true&output=csv";
 const CSV_DESARROLLOS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW6xkyA7SL8Ngdmk9YsqWnlNcOYCQSAwSWnvE4J8YVPlFBOeLYma9ROnwcyfkxA/pub?gid=809287502&single=true&output=csv";
@@ -83,7 +77,7 @@ function mostrarResultados() {
 
         <h3>${p.MODELO}</h3>
 
-        <p><strong>📍 Ubicación:</strong><a href="${p.UBICACIÓN}" target="_blank">Abrir</a></p>
+        <p><strong>📍 Ubicación:</strong><a href="${p.UBICACIÓN}" target="_blank">Abrir en Maps</a></p>
 
         <p>
           🛏️ ${p.RECAMARAS} | 
@@ -97,16 +91,14 @@ function mostrarResultados() {
 
         <hr>
 
-        <p><strong>💰 Precio Avalúo:</strong> $${p.PRECIO_AVALUO}</p>
+        <p><strong>💰 Precio AAvalúo:</strong> $${p.PRECIO_AVALUO}</p>
         <p><strong>🏦 Infonavit:</strong> $${p.P_INFONAVIT}</p>
         <p><strong>🏛️ FOVISSSTE:</strong> $${p.P_FOVISSSTE}</p>
         <p><strong>🏦 Bancario:</strong> $${p.P_BANCARIO}</p>
+        <p><strong>🏦 DISPONIBLIDAD:</strong> $${p.P_DISPONIBILIDAD}</p>
         <p><strong>💰 Gastos:</strong> $${p.GASTOS_NOTARIALES}</p>
         <p><strong>📝 Observaciones:</strong><br>${p.OBSERVACIONES || "Sin observaciones"}</p>
 
-        <!--<button class="btn-maps" onclick="abrirMaps('${p.UBICACIÓN}')">
-          📍 Abrir en Maps
-        </button>-->
 
       </div>
     `;
@@ -114,19 +106,11 @@ function mostrarResultados() {
 }
 
 //function enviarWhatsApp(modelo) {
- // const mensaje = `Hola, quiero información del modelo ${modelo} - JLIbañez Inmobiliaria`;
+ // const mensaje = `Hola, quiero información del modelo ${modelo} - Ibañez Inmobiliaria`;
  // const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
  // window.open(url, "_blank");
 //}
-function abrirMaps(ubicacion) {
-  if (!ubicacion) {
-    alert("Ubicación no disponible");
-    return;
-  }
 
-  const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ubicacion)}`;
-  window.open(url, "_blank");
-}
 function formatoPrecio(valor) {
   if (!valor) return "0";
   return Number(valor).toLocaleString("es-MX");
