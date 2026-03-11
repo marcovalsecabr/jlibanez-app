@@ -72,11 +72,13 @@ function mostrarResultados() {
   contenedor.innerHTML = "";
 
   filtrados.forEach((p, index) => {
+    let desarrollo = desarrollos.find(d => d.Id_desarrollo === p.Id_desarrollo);
+  let nombreDesarrollo = desarrollo ? desarrollo.NomDesarrollo : "";
 
     let mensaje = `
 🏡 Te comparto esta opción:
 
-Desarrollo: ${p.NomDesarrollo}
+Desarrollo: ${nombreDesarrollo}
 Modelo: ${p.MODELO}
 Recámaras: ${p.RECAMARAS}
 Baños: ${p.BANOS}
