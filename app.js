@@ -76,7 +76,7 @@ function mostrarResultados() {
     let mensaje = `
 🏡 Te comparto esta opción:
 
-Desarrollo: ${d.NomDesarrollo}
+Desarrollo: ${p.NomDesarrollo}
 Modelo: ${p.MODELO}
 Recámaras: ${p.RECAMARAS}
 Baños: ${p.BANOS}
@@ -89,7 +89,7 @@ Construcción: ${p.M2_CONSTRUCCION} m²
         🏦 *Bancario:* $${p.P_BANCARIO}
         🏦 *DISPONIBLIDAD:* ${p.DISPONIBILIDAD}
         💰 *Gastos:* ${p.GASTOS_NOTARIALES || "CONSULTAR"}
-        📝 *Observaciones:*${p.OBSERVACIONES || "Sin observaciones"}
+        📝 *Observaciones:* ${p.OBSERVACIONES || "Sin observaciones"}
 
 Ubicación:
 ${p.UBICACIÓN}
