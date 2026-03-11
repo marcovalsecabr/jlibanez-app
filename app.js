@@ -76,7 +76,7 @@ function mostrarResultados() {
     let mensaje = `
 🏡 Te comparto esta opción:
 
-Desarrollo: ${p.DESARROLLO}
+Desarrollo: ${d.NomDesarrollo}
 Modelo: ${p.MODELO}
 Recámaras: ${p.RECAMARAS}
 Baños: ${p.BANOS}
