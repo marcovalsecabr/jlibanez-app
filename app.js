@@ -83,7 +83,7 @@ Modelo: ${p.MODELO}
 Recámaras: ${p.RECAMARAS}
 Baños: ${p.BANOS}
 Estacionamientos: ${p.ESTACIONAMIENTOS}
-Construcción: ${p.CONSTRUCCION} m²
+Construcción: ${p.M2_CONSTRUCCION} m²
 
         💰 *Precio Avalúo:* $${p.PRECIO_AVALUO}
         🏦 *Infonavit:* $${p.P_INFONAVIT}
@@ -96,23 +96,18 @@ Construcción: ${p.CONSTRUCCION} m²
 Ubicación:
 ${p.UBICACIÓN}
 `;
-
     let linkWhatsapp = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
-
     contenedor.innerHTML += `
       <div class="card">
-
         <h3>${p.MODELO}</h3>
-
         <p><strong>📍 Ubicación:</strong><a href="${p.UBICACIÓN}" target="_blank">Abrir en Maps</a></p>
-
         <p>
           🛏️ ${p.RECAMARAS} | 
           🛁 ${p.BANOS}
         </p>
         <p>
           🚗 ${p.ESTACIONAMIENTOS} | 
-          📐 ${p.CONSTRUCCION} m²
+          📐 ${p.M2_CONSTRUCCION} m²
         </p>
         <hr>
         <p><strong>💰 Precio Avalúo:</strong> $${p.PRECIO_AVALUO}</p>
@@ -122,15 +117,12 @@ ${p.UBICACIÓN}
         <p><strong>🏦 DISPONIBLIDAD:</strong> ${p.DISPONIBILIDAD}</p>
         <p><strong>💰 Gastos:</strong> ${p.GASTOS_NOTARIALES}</p>
         <p><strong>📝 Observaciones:</strong><br>${p.OBSERVACIONES || "Sin observaciones"}</p>
-
         <a href="${linkWhatsapp}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:white;padding:8px 12px;border-radius:6px;text-decoration:none;margin-top:10px;">
           <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="18">
           Compartir por WhatsApp
         </a>
-
       </div>
     `;
   });
 }
-
 iniciar();
