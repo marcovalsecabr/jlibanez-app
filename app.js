@@ -83,7 +83,7 @@ Modelo: ${p.MODELO}
 Recámaras: ${p.RECAMARAS}
 Baños: ${p.BANOS}
 Estacionamientos: ${p.ESTACIONAMIENTOS}
-Construcción: ${p.M2_CONSTRUCCION} m²
+Construcción: ${p.CONSTRUCCION} m²
 
         💰 *Precio Avalúo:* $${p.PRECIO_AVALUO}
         🏦 *Infonavit:* $${p.P_INFONAVIT}
@@ -112,7 +112,7 @@ ${p.UBICACIÓN}
         </p>
         <p>
           🚗 ${p.ESTACIONAMIENTOS} | 
-          📐 ${p.M2_CONSTRUCCION} m²
+          📐 ${p.CONSTRUCCION} m²
         </p>
         <hr>
         <p><strong>💰 Precio Avalúo:</strong> $${p.PRECIO_AVALUO}</p>
